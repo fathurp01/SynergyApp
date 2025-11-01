@@ -12,18 +12,22 @@ class BiodataPage extends StatefulWidget {
 
 class _BiodataPageState extends State<BiodataPage> {
   // Form controllers
-  final _nameController = TextEditingController(text: 'John Doe');
-  final _hobiController = TextEditingController(text: 'Coding & Gaming');
+  final _nameController = TextEditingController(
+    text: 'Fathurrahman Pratama Putra',
+  );
+  final _hobiController = TextEditingController(
+    text: 'Music, Traveling, Reading & Watching Movie',
+  );
 
-  String _selectedJurusan = 'Teknik Informatika';
+  String _selectedJurusan = 'Informatika';
   String _selectedGender = 'Laki-laki';
-  DateTime _selectedDate = DateTime(2000, 1, 1);
+  DateTime _selectedDate = DateTime(2005, 1, 30);
 
   final List<String> _jurusanList = [
-    'Teknik Informatika',
+    'Informatika',
     'Sistem Informasi',
-    'Teknik Komputer',
-    'Data Science',
+    'Teknik Elektro',
+    'Teknik Sipil',
   ];
 
   @override
