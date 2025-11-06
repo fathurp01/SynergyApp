@@ -6,59 +6,59 @@ class NewsPage extends StatelessWidget {
 
   static const List<Map<String, String>> _newsItems = [
     {
-      'title': 'Flutter 3.5 Released with Amazing Features',
+      'title': 'Nusantara Capital City Begins Operations in 2025',
       'summary':
-          'Google announces the latest version of Flutter with improved performance and new widgets for better app development.',
-      'category': 'Technology',
+          'Indonesia\'s new capital city in East Kalimantan officially operates as the new center of government with modern and eco-friendly infrastructure.',
+      'category': 'National',
       'date': '2 hours ago',
     },
     {
-      'title': 'AI Revolution in Mobile Development',
+      'title': 'Indonesia Wins Gold at SEA Games 2025',
       'summary':
-          'Artificial Intelligence is transforming how we build mobile applications, making development faster and smarter.',
-      'category': 'AI & ML',
+          'Indonesian esports team successfully won gold medals in Mobile Legends and PUBG Mobile, bringing pride to the nation at SEA Games.',
+      'category': 'Sports',
       'date': '5 hours ago',
     },
     {
-      'title': 'Best Practices for Clean Code',
+      'title': 'Fuel Price Increase Sparks Public Protests',
       'summary':
-          'Learn the essential principles of writing maintainable, scalable, and clean code in modern software development.',
-      'category': 'Development',
+          'Government policy to raise fuel prices has sparked protests from various groups and labor organizations across Indonesia.',
+      'category': 'Economy',
       'date': '1 day ago',
     },
     {
-      'title': 'Material 3 Design System Guide',
+      'title': 'MSME Digitalization Boosts Local Economy',
       'summary':
-          'Comprehensive guide to implementing Material You design system in your Flutter applications.',
-      'category': 'Design',
+          'Government-supported MSME digitalization program successfully increased small business sales by 150% through e-commerce platforms.',
+      'category': 'Business',
       'date': '1 day ago',
     },
     {
-      'title': 'State Management in Flutter',
+      'title': 'COVID-19 Booster Vaccination Reaches 80%',
       'summary':
-          'Comparing different state management solutions: Provider, Riverpod, Bloc, and GetX.',
-      'category': 'Flutter',
+          'Indonesia records remarkable achievement with booster vaccination rate reaching 80% of the adult population target across the archipelago.',
+      'category': 'Health',
       'date': '2 days ago',
     },
     {
-      'title': 'The Future of Mobile Apps',
+      'title': 'Jakarta Floods: Thousands Evacuated',
       'summary':
-          'Industry experts predict trends that will shape mobile application development in the coming years.',
+          'Heavy rainfall caused massive flooding in Jakarta and surrounding areas, forcing thousands of residents to evacuate to safer locations.',
+      'category': 'Disaster',
+      'date': '2 days ago',
+    },
+    {
+      'title': 'Indonesian Startup Secures \$50 Million Funding',
+      'summary':
+          'Bandung-based tech startup successfully raised \$50 million in Series B funding from foreign investors for Southeast Asia expansion.',
       'category': 'Technology',
-      'date': '2 days ago',
-    },
-    {
-      'title': 'Optimizing App Performance',
-      'summary':
-          'Tips and tricks to make your Flutter apps run smoother and faster on all devices.',
-      'category': 'Development',
       'date': '3 days ago',
     },
     {
-      'title': 'Dark Mode Implementation Guide',
+      'title': 'Nusantara Culinary Festival in Bali',
       'summary':
-          'Step-by-step tutorial on implementing beautiful dark mode themes in your mobile applications.',
-      'category': 'Design',
+          'Indonesia\'s largest culinary festival showcases 500+ traditional dishes from 34 provinces, attracting domestic and international tourists.',
+      'category': 'Culture',
       'date': '3 days ago',
     },
   ];
