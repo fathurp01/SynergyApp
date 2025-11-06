@@ -2,20 +2,63 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/glass_card.dart';
 
-/// Weather page with static weather data and animated icon
-class WeatherPage extends StatelessWidget {
+/// Weather page with static weather data and animated clouds
+class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
 
-  // Static weather data
+  @override
+  State<WeatherPage> createState() => _WeatherPageState();
+}
+
+class _WeatherPageState extends State<WeatherPage>
+    with TickerProviderStateMixin {
+  late AnimationController _cloudController;
+  late AnimationController _glowController;
+  late Animation<double> _cloudAnimation;
+  late Animation<double> _glowAnimation;
+
+  // Static weather data - Updated to Bandung with Partly Cloudy
   static const Map<String, dynamic> _weatherData = {
-    'location': 'Jakarta, Indonesia',
-    'temperature': 32,
-    'condition': 'Sunny',
-    'humidity': 65,
-    'windSpeed': 12,
-    'feelsLike': 35,
-    'uvIndex': 8,
+    'location': 'Bandung, Indonesia',
+    'temperature': 28,
+    'condition': 'Partly Cloudy',
+    'humidity': 70,
+    'windSpeed': 8,
+    'feelsLike': 30,
+    'uvIndex': 6,
   };
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Cloud animation controller - very slow movement
+    _cloudController = AnimationController(
+      duration: const Duration(seconds: 6),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _cloudAnimation = Tween<double>(begin: -8.0, end: 8.0).animate(
+      CurvedAnimation(parent: _cloudController, curve: Curves.easeInOut),
+    );
+
+    // Glow animation controller - very subtle pulsing
+    _glowController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _glowAnimation = Tween<double>(begin: 0.4, end: 0.6).animate(
+      CurvedAnimation(parent: _glowController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _cloudController.dispose();
+    _glowController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +79,9 @@ class WeatherPage extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Header
+                // Header - Centered
                 Text(
                   'Weather',
                   style: GoogleFonts.poppins(
@@ -60,23 +103,67 @@ class WeatherPage extends StatelessWidget {
                 Center(
                   child: Column(
                     children: [
-                      // Animated weather icon placeholder
-                      Container(
-                        width: 200,
+                      // Animated weather icon - Sun with moving clouds
+                      SizedBox(
+                        width: 280,
                         height: 200,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white.withOpacity(0.1),
-                        ),
                         child: Stack(
+                          clipBehavior: Clip.none,
                           alignment: Alignment.center,
                           children: [
-                            Icon(
-                              Icons.wb_sunny,
-                              size: 120,
-                              color: Colors.yellow.shade300,
+                            // Animated Cloud - Behind Sun (Left side)
+                            AnimatedBuilder(
+                              animation: _cloudAnimation,
+                              builder: (context, child) {
+                                return Positioned(
+                                  left: 30 + _cloudAnimation.value,
+                                  top: 60,
+                                  child: Icon(
+                                    Icons.cloud,
+                                    size: 90,
+                                    color: Colors.white.withOpacity(0.5),
+                                  ),
+                                );
+                              },
                             ),
-                            // Replace with: Lottie.asset('assets/animations/weather_sunny.json')
+
+                            // Animated Sun with Glow (Center)
+                            AnimatedBuilder(
+                              animation: _glowAnimation,
+                              builder: (context, child) {
+                                return Center(
+                                  child: Container(
+                                    width: 110,
+                                    height: 110,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.orange.shade400,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.orange.shade300
+                                              .withOpacity(
+                                                _glowAnimation.value,
+                                              ),
+                                          blurRadius: 40,
+                                          spreadRadius: 10,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+
+                            // Static Cloud - Front of Sun (Right side)
+                            Positioned(
+                              right: 30,
+                              top: 55,
+                              child: Icon(
+                                Icons.cloud,
+                                size: 130,
+                                color: Colors.white,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -184,11 +271,11 @@ class WeatherPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      _buildForecastItem('Mon', 'Sunny', 31, 24),
-                      _buildForecastItem('Tue', 'Cloudy', 29, 23),
-                      _buildForecastItem('Wed', 'Rainy', 27, 22),
-                      _buildForecastItem('Thu', 'Sunny', 32, 25),
-                      _buildForecastItem('Fri', 'Partly Cloudy', 30, 24),
+                      _buildForecastItem('Mon', 'Partly Cloudy', 28, 21),
+                      _buildForecastItem('Tue', 'Cloudy', 27, 20),
+                      _buildForecastItem('Wed', 'Rainy', 25, 19),
+                      _buildForecastItem('Thu', 'Partly Cloudy', 29, 22),
+                      _buildForecastItem('Fri', 'Sunny', 30, 23),
                     ],
                   ),
                 ),
