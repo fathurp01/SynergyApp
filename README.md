@@ -70,7 +70,8 @@ Proyek ini bertujuan untuk mendemonstrasikan kemampuan dalam:
 - ✨ **Animasi**: Scale & fade animation untuk logo
 
 **Screenshot:**
-![Splash Screen](assets/screenshots/splash_screen.jpg)
+
+<img src="assets/screenshots/splash_screen.jpg" width="250" alt="Splash Screen"/>
 
 **Cuplikan Kode:**
 ```dart
@@ -143,7 +144,8 @@ class _MainScreenState extends State<MainScreen> {
 | 📰 | News | Portal berita teknologi |
 
 **Screenshot:**
-![Dashboard](assets/screenshots/dashboard.jpg)
+
+<img src="assets/screenshots/dashboard.jpg" width="250" alt="Dashboard"/>
 
 ---
 
@@ -240,8 +242,9 @@ Future<void> _selectDate(BuildContext context) async {
 - Hobi (TextField multiline)
 
 **Screenshot:**
-![Biodata View Mode](assets/screenshots/biodata_view.jpg)
-![Biodata Edit Mode](assets/screenshots/biodata_edit.jpg)
+
+<img src="assets/screenshots/biodata_view.jpg" width="250" alt="Biodata View Mode"/>
+<img src="assets/screenshots/biodata_edit.jpg" width="250" alt="Biodata Edit Mode"/>
 
 ---
 
@@ -288,7 +291,8 @@ static const List<Map<String, String>> _contacts = [
 - ✅ **Header Info**: Total jumlah kontak
 
 **Screenshot:**
-![Contacts List](assets/screenshots/contacts.jpg)
+
+<img src="assets/screenshots/contacts.jpg" width="250" alt="Contacts List"/>
 
 ---
 
@@ -369,7 +373,8 @@ void _onSquareRoot() {
 - ✅ **Gradient Background**: Design yang modern
 
 **Screenshot:**
-![Calculator](assets/screenshots/calculator.jpg)
+
+<img src="assets/screenshots/calculator.jpg" width="250" alt="Calculator"/>
 
 ---
 
@@ -433,7 +438,8 @@ Lottie.asset(
 ```
 
 **Screenshot:**
-![Weather](assets/screenshots/weather.jpg)
+
+<img src="assets/screenshots/weather.jpg" width="250" alt="Weather"/>
 
 ---
 
@@ -489,7 +495,8 @@ static const List<Map<String, String>> _newsItems = [
 - ✅ **Tap Interaction**: Visual feedback saat tap
 
 **Screenshot:**
-![News List](assets/screenshots/news.jpg)
+
+<img src="assets/screenshots/news.jpg" width="250" alt="News List"/>
 
 ---
 
