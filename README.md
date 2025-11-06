@@ -259,13 +259,23 @@ Future<void> _selectDate(BuildContext context) async {
 **Data Statis:**
 ```dart
 static const List<Map<String, String>> _contacts = [
-  {'name': 'Alice Johnson', 'phone': '+62 812-3456-7890'},
-  {'name': 'Bob Williams', 'phone': '+62 813-9876-5432'},
-  {'name': 'Charlie Brown', 'phone': '+62 821-1111-2222'},
-  {'name': 'Diana Prince', 'phone': '+62 822-3333-4444'},
-  {'name': 'Edward Norton', 'phone': '+62 823-5555-6666'},
-  // ... 12 kontak lainnya
-  {'name': 'Quincy Jones', 'phone': '+62 877-1593-5748'},
+  {'name': 'Budi Bin Belut', 'phone': '0812-3456-7101'},
+  {'name': 'Tina Tertawa', 'phone': '0813-7788-2202'},
+  {'name': 'Siti Suka Soto', 'phone': '0821-9090-3303'},
+  {'name': 'Roni Rambutan', 'phone': '0822-3344-4404'},
+  {'name': 'Joko Jomblo', 'phone': '0812-7711-5505'},
+  {'name': 'Udin Ulala', 'phone': '0831-6622-6606'},
+  {'name': 'Ani Anti Galau', 'phone': '0838-4141-7707'},
+  {'name': 'Tono Tertib', 'phone': '0851-5223-8808'},
+  {'name': 'Dewi Durian', 'phone': '0852-6420-9909'},
+  {'name': 'Bambang Baperan', 'phone': '0819-3535-0010'},
+  {'name': 'Darto Daring', 'phone': '0877-9898-1111'},
+  {'name': 'Sari Sambal Setan', 'phone': '0881-7744-1212'},
+  {'name': 'Ratna Receh', 'phone': '0895-1122-1313'},
+  {'name': 'Bagas Bakso Beranak', 'phone': '0896-5544-1414'},
+  {'name': 'Mimin Mamam Mie', 'phone': '0897-6677-1515'},
+  {'name': 'Gilang Guling', 'phone': '0898-8800-1616'},
+  {'name': 'Caca Caper', 'phone': '0899-9922-1717'},
 ];
 ```
 

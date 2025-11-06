@@ -18,25 +18,25 @@ class _BiodataPageState extends State<BiodataPage> {
   final _nameController = TextEditingController(
     text: 'Fathurrahman Pratama Putra',
   );
-  final _hobiController = TextEditingController(
+  final _hobbyController = TextEditingController(
     text: 'Music, Traveling, Reading & Watching Movie',
   );
 
-  String _selectedJurusan = 'Informatika';
-  String _selectedGender = 'Laki-laki';
+  String _selectedMajor = 'Informatics';
+  String _selectedGender = 'Male';
   DateTime _selectedDate = DateTime(2005, 1, 30);
 
-  final List<String> _jurusanList = [
-    'Informatika',
-    'Sistem Informasi',
-    'Teknik Elektro',
-    'Teknik Sipil',
+  final List<String> _majorList = [
+    'Informatics',
+    'Information System',
+    'Electrical Engineering',
+    'Civil Engineering',
   ];
 
   @override
   void dispose() {
     _nameController.dispose();
-    _hobiController.dispose();
+    _hobbyController.dispose();
     super.dispose();
   }
 
@@ -198,7 +198,7 @@ class _BiodataPageState extends State<BiodataPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Informasi Pribadi',
+                    'Personal Information',
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -211,26 +211,26 @@ class _BiodataPageState extends State<BiodataPage> {
                       ? TextField(
                           controller: _nameController,
                           decoration: const InputDecoration(
-                            labelText: 'Nama Lengkap',
+                            labelText: 'Full Name',
                             prefixIcon: Icon(Icons.person_outline),
                           ),
                         )
                       : _buildInfoRow(
                           icon: Icons.person_outline,
-                          label: 'Nama Lengkap',
+                          label: 'Full Name',
                           value: _nameController.text,
                         ),
                   const SizedBox(height: 16),
 
-                  // Jurusan Field
+                  // Major Field
                   _isEditMode
                       ? DropdownButtonFormField<String>(
-                          value: _selectedJurusan,
+                          value: _selectedMajor,
                           decoration: const InputDecoration(
-                            labelText: 'Jurusan',
+                            labelText: 'Major',
                             prefixIcon: Icon(Icons.school_outlined),
                           ),
-                          items: _jurusanList.map((String value) {
+                          items: _majorList.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
@@ -238,21 +238,21 @@ class _BiodataPageState extends State<BiodataPage> {
                           }).toList(),
                           onChanged: (String? newValue) {
                             setState(() {
-                              _selectedJurusan = newValue!;
+                              _selectedMajor = newValue!;
                             });
                           },
                         )
                       : _buildInfoRow(
                           icon: Icons.school_outlined,
-                          label: 'Jurusan',
-                          value: _selectedJurusan,
+                          label: 'Major',
+                          value: _selectedMajor,
                         ),
                   const SizedBox(height: 16),
 
                   // Gender Field
                   if (_isEditMode) ...[
                     Text(
-                      'Jenis Kelamin',
+                      'Gender',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -263,8 +263,8 @@ class _BiodataPageState extends State<BiodataPage> {
                       children: [
                         Expanded(
                           child: RadioListTile<String>(
-                            title: const Text('Laki-laki'),
-                            value: 'Laki-laki',
+                            title: const Text('Male'),
+                            value: 'Male',
                             groupValue: _selectedGender,
                             onChanged: (String? value) {
                               setState(() {
@@ -276,8 +276,8 @@ class _BiodataPageState extends State<BiodataPage> {
                         ),
                         Expanded(
                           child: RadioListTile<String>(
-                            title: const Text('Perempuan'),
-                            value: 'Perempuan',
+                            title: const Text('Female'),
+                            value: 'Female',
                             groupValue: _selectedGender,
                             onChanged: (String? value) {
                               setState(() {
@@ -291,10 +291,10 @@ class _BiodataPageState extends State<BiodataPage> {
                     ),
                   ] else
                     _buildInfoRow(
-                      icon: _selectedGender == 'Laki-laki'
+                      icon: _selectedGender == 'Male'
                           ? Icons.male
                           : Icons.female,
-                      label: 'Jenis Kelamin',
+                      label: 'Gender',
                       value: _selectedGender,
                     ),
                   const SizedBox(height: 16),
@@ -305,7 +305,7 @@ class _BiodataPageState extends State<BiodataPage> {
                           onTap: () => _selectDate(context),
                           child: InputDecorator(
                             decoration: const InputDecoration(
-                              labelText: 'Tanggal Lahir',
+                              labelText: 'Date of Birth',
                               prefixIcon: Icon(Icons.calendar_today_outlined),
                             ),
                             child: Text(
@@ -316,26 +316,26 @@ class _BiodataPageState extends State<BiodataPage> {
                         )
                       : _buildInfoRow(
                           icon: Icons.calendar_today_outlined,
-                          label: 'Tanggal Lahir',
+                          label: 'Date of Birth',
                           value:
                               '${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}',
                         ),
                   const SizedBox(height: 16),
 
-                  // Hobi Field
+                  // Hobby Field
                   _isEditMode
                       ? TextField(
-                          controller: _hobiController,
+                          controller: _hobbyController,
                           decoration: const InputDecoration(
-                            labelText: 'Hobi',
+                            labelText: 'Hobbies',
                             prefixIcon: Icon(Icons.favorite_outline),
                           ),
                           maxLines: 2,
                         )
                       : _buildInfoRow(
                           icon: Icons.favorite_outline,
-                          label: 'Hobi',
-                          value: _hobiController.text,
+                          label: 'Hobbies',
+                          value: _hobbyController.text,
                           isLast: true,
                         ),
                 ],
@@ -350,14 +350,14 @@ class _BiodataPageState extends State<BiodataPage> {
                   _toggleEditMode();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: const Text('Perubahan disimpan!'),
+                      content: const Text('Changes saved!'),
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
                 },
                 icon: const Icon(Icons.check),
-                label: const Text('Simpan Perubahan'),
+                label: const Text('Save Changes'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   foregroundColor: Colors.white,
