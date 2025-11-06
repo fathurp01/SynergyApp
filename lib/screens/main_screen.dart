@@ -15,6 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
+  bool _isTransitioning = false;
 
   // List of pages
   final List<Widget> _pages = const [
@@ -25,12 +26,51 @@ class _MainScreenState extends State<MainScreen> {
     NewsPage(),
   ];
 
+  void _onTabTapped(int index) async {
+    if (index == _currentIndex || _isTransitioning) return;
+
+    setState(() {
+      _isTransitioning = true;
+    });
+
+    // Wait for fade out
+    await Future.delayed(const Duration(milliseconds: 50));
+
+    // Change page
+    setState(() {
+      _currentIndex = index;
+    });
+
+    // Wait for fade in
+    await Future.delayed(const Duration(milliseconds: 50));
+
+    setState(() {
+      _isTransitioning = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: _pages[_currentIndex],
+      body: Stack(
+        children: [
+          // Main content
+          AnimatedOpacity(
+            opacity: _isTransitioning ? 0.0 : 1.0,
+            duration: const Duration(milliseconds: 50),
+            curve: Curves.easeInOut,
+            child: _pages[_currentIndex],
+          ),
+          // White flash overlay
+          IgnorePointer(
+            child: AnimatedOpacity(
+              opacity: _isTransitioning ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 40),
+              curve: Curves.easeInOut,
+              child: Container(color: Colors.white),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -44,11 +84,7 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
+          onTap: _onTabTapped,
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
           selectedItemColor: Theme.of(context).colorScheme.primary,
