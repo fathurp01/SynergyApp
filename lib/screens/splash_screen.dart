@@ -222,14 +222,9 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ),
                           child: ClipOval(
-                            child: Container(
-                              color: Colors.white,
-                              child: Icon(
-                                Icons.person,
-                                size: 35,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              // Replace with: Image.asset('assets/images/developer_photo.png', fit: BoxFit.cover)
+                            child: Image.asset(
+                              'assets/images/profil.jpg',
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),

@@ -139,7 +139,14 @@ class _BiodataPageState extends State<BiodataPage> {
                     ),
                   ],
                 ),
-                child: const Icon(Icons.person, size: 60, color: Colors.white),
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/images/profil.jpg',
+                    fit: BoxFit.cover,
+                    width: 120,
+                    height: 120,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 24),
