@@ -793,38 +793,43 @@ flutter install
 ## 📸 SCREENSHOT APLIKASI
 
 ### 1. Splash Screen (5 Detik)
-<!-- Ganti dengan screenshot Anda -->
-![Splash Screen](assets/screenshots/splash.png)
+<img src="assets/screenshots/splash_screen.jpg" width="250" alt="Splash Screen"/>
+
 > Halaman pembuka dengan logo SYNERGY, foto developer, NIM, nama, dan wave animation
 
 ### 2. Dashboard - Bottom Navigation
-<!-- Ganti dengan screenshot Anda -->
-![Dashboard](assets/screenshots/dashboard.png)
+<img src="assets/screenshots/dashboard.jpg" width="250" alt="Dashboard"/>
+
 > Main screen dengan 5 menu di bottom navigation bar
 
 ### 3. Biodata - View Mode
-<!-- Ganti dengan screenshot Anda -->
-![Biodata View](assets/screenshots/biodata_view.jpg)
+<img src="assets/screenshots/biodata_view.jpg" width="250" alt="Biodata View"/>
+
 > Tampilan biodata lengkap dengan foto profil dan informasi
 
 ### 4. Biodata - Edit Mode
-![Biodata Edit](assets/screenshots/biodata_edit.jpg)
+<img src="assets/screenshots/biodata_edit.jpg" width="250" alt="Biodata Edit"/>
+
 > Mode edit dengan berbagai input: TextField, Dropdown, Radio, DatePicker
 
 ### 5. Contacts - List 17 Kontak
-![Contacts](assets/screenshots/contacts.jpg)
+<img src="assets/screenshots/contacts.jpg" width="250" alt="Contacts"/>
+
 > Daftar 17 kontak dengan circle avatar dan action buttons
 
 ### 6. Calculator - Operasi Matematika
-![Calculator](assets/screenshots/calculator.jpg)
+<img src="assets/screenshots/calculator.jpg" width="250" alt="Calculator"/>
+
 > Kalkulator dengan operasi +, -, ×, ÷, x², √, C
 
 ### 7. Weather - Info Cuaca Bandung
-![Weather](assets/screenshots/weather.jpg)
+<img src="assets/screenshots/weather.jpg" width="250" alt="Weather"/>
+
 > Informasi cuaca lengkap dengan suhu, kelembaban, angin, UV index
 
 ### 8. News - Portal Berita Indonesia
-![News](assets/screenshots/news.jpg)
+<img src="assets/screenshots/news.jpg" width="250" alt="News"/>
+
 > Daftar 8 berita dengan card layout, kategori, dan timestamp
 
 ---
