@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'main_screen.dart';
 
-/// Splash screen shown for exactly 5 seconds
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -25,25 +24,21 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Main animation setup - Netflix-style
     _controller = AnimationController(
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
 
-    // Wave animation controller - very slow for aesthetic movement
     _waveController = AnimationController(
-      duration: const Duration(seconds: 20), // 20 seconds for very slow wave
+      duration: const Duration(seconds: 20),
       vsync: this,
     )..repeat();
 
-    // Progress animation controller - 5 seconds
     _progressController = AnimationController(
       duration: const Duration(seconds: 5),
       vsync: this,
     );
 
-    // Scale animation: starts small, grows to normal size, then slightly shrinks
     _scaleAnimation = TweenSequence<double>([
       TweenSequenceItem(
         tween: Tween<double>(
@@ -61,12 +56,10 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     ]).animate(_controller);
 
-    // Progress animation
     _progressAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _progressController, curve: Curves.easeInOut),
     );
 
-    // Fade animation
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
@@ -77,7 +70,6 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
     _progressController.forward();
 
-    // Navigate after exactly 5 seconds
     Timer(const Duration(seconds: 5), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
@@ -119,7 +111,7 @@ class _SplashScreenState extends State<SplashScreen>
         ),
         child: Stack(
           children: [
-            // Wave animation - behind identity section, from bottom to middle
+            // === Wave Animation ===
             Positioned(
               bottom: 0,
               left: 0,
@@ -130,8 +122,7 @@ class _SplashScreenState extends State<SplashScreen>
                   return CustomPaint(
                     size: Size(
                       MediaQuery.of(context).size.width,
-                      MediaQuery.of(context).size.height *
-                          0.55, // From bottom to between app name and photo
+                      MediaQuery.of(context).size.height * 0.55,
                     ),
                     painter: SimpleWavePainter(
                       animationValue: _waveController.value,
@@ -143,7 +134,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
 
-            // Main content - wrapped in AnimatedBuilder for logo animation
+            // === Main Content ===
             AnimatedBuilder(
               animation: _controller,
               builder: (context, child) {
@@ -155,7 +146,6 @@ class _SplashScreenState extends State<SplashScreen>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // App Title with gradient
                           ShaderMask(
                             shaderCallback: (bounds) => LinearGradient(
                               colors: [
@@ -174,8 +164,6 @@ class _SplashScreenState extends State<SplashScreen>
                               ),
                             ),
                           ),
-
-                          // Subtitle
                           Text(
                             'ALL YOU NEED IN ONE APP',
                             style: GoogleFonts.poppins(
@@ -193,7 +181,7 @@ class _SplashScreenState extends State<SplashScreen>
               },
             ),
 
-            // Developer info at bottom - wrapped in AnimatedBuilder
+            // === Developer Info ===
             AnimatedBuilder(
               animation: _controller,
               builder: (context, child) {
@@ -210,7 +198,6 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                     child: Column(
                       children: [
-                        // Developer Photo - smaller and more subtle
                         Container(
                           width: 60,
                           height: 60,
@@ -229,8 +216,6 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                         ),
                         const SizedBox(height: 16),
-
-                        // Developer Info
                         Text(
                           'Fathurrahman Pratama Putra',
                           style: GoogleFonts.poppins(
@@ -257,7 +242,7 @@ class _SplashScreenState extends State<SplashScreen>
               },
             ),
 
-            // Horizontal progress bar - wrapped in AnimatedBuilder
+            // === Progress Bar ===
             AnimatedBuilder(
               animation: _controller,
               builder: (context, child) {
@@ -274,7 +259,6 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                     child: Column(
                       children: [
-                        // Loading text
                         Padding(
                           padding: const EdgeInsets.only(bottom: 12),
                           child: Text(
@@ -287,7 +271,6 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ),
                         ),
-                        // Progress bar container
                         Container(
                           height: 3,
                           decoration: BoxDecoration(
@@ -299,7 +282,6 @@ class _SplashScreenState extends State<SplashScreen>
                             builder: (context, child) {
                               return Stack(
                                 children: [
-                                  // Progress bar
                                   FractionallySizedBox(
                                     widthFactor: _progressAnimation.value,
                                     child: Container(
@@ -336,7 +318,6 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-/// Simple wave painter for aesthetic background effect
 class SimpleWavePainter extends CustomPainter {
   final double animationValue;
   final Color primaryColor;
@@ -350,19 +331,12 @@ class SimpleWavePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Wave parameters for slow, aesthetic movement - flatter waves
-    final double waveHeight = 20.0; // Reduced from 35 to 20 for flatter waves
-    final double frequency =
-        1.5; // Reduced from 2 to 1.5 for wider, flatter waves
-
-    // Very slow phase shift: 20 seconds per full cycle
-    // During 5 sec splash: animationValue goes 0 to 0.25 (25% of cycle)
+    final double waveHeight = 20.0;
+    final double frequency = 1.5;
     final double phase = animationValue * 2 * math.pi;
 
-    // First wave layer (increased opacity)
     final paint1 = Paint()
-      ..color = Colors.white
-          .withOpacity(0.15) // Increased from 0.08 to 0.15
+      ..color = Colors.white.withOpacity(0.15)
       ..style = PaintingStyle.fill;
 
     final path1 = Path();
@@ -370,7 +344,7 @@ class SimpleWavePainter extends CustomPainter {
 
     for (double x = 0; x <= size.width; x += 3) {
       final double y =
-          size.height * 0.5 + // Changed from 0.4 to 0.5 for flatter top
+          size.height * 0.5 +
           waveHeight *
               math.sin((x / size.width * frequency * 2 * math.pi) + phase);
 
@@ -386,10 +360,8 @@ class SimpleWavePainter extends CustomPainter {
     path1.close();
     canvas.drawPath(path1, paint1);
 
-    // Second wave layer (increased opacity)
     final paint2 = Paint()
-      ..color = Colors.white
-          .withOpacity(0.10) // Increased from 0.05 to 0.10
+      ..color = Colors.white.withOpacity(0.10)
       ..style = PaintingStyle.fill;
 
     final path2 = Path();
@@ -397,7 +369,7 @@ class SimpleWavePainter extends CustomPainter {
 
     for (double x = 0; x <= size.width; x += 3) {
       final double y =
-          size.height * 0.45 + // Changed from 0.35 to 0.45 for flatter top
+          size.height * 0.45 +
           waveHeight *
               0.8 *
               math.sin(
@@ -418,10 +390,8 @@ class SimpleWavePainter extends CustomPainter {
     path2.close();
     canvas.drawPath(path2, paint2);
 
-    // Third wave layer (increased opacity)
     final paint3 = Paint()
-      ..color = Colors.white
-          .withOpacity(0.06) // Increased from 0.03 to 0.06
+      ..color = Colors.white.withOpacity(0.06)
       ..style = PaintingStyle.fill;
 
     final path3 = Path();
@@ -429,7 +399,7 @@ class SimpleWavePainter extends CustomPainter {
 
     for (double x = 0; x <= size.width; x += 3) {
       final double y =
-          size.height * 0.4 + // Changed from 0.3 to 0.4 for flatter top
+          size.height * 0.4 +
           waveHeight *
               0.6 *
               math.sin(

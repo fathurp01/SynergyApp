@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// Circular avatar with initials
 class AvatarCircle extends StatelessWidget {
   final String name;
   final double size;

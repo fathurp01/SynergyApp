@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/glass_card.dart';
 
-/// Biodata page with View/Edit mode toggle
 class BiodataPage extends StatefulWidget {
   const BiodataPage({super.key});
 
@@ -11,10 +10,8 @@ class BiodataPage extends StatefulWidget {
 }
 
 class _BiodataPageState extends State<BiodataPage> {
-  // Edit mode state
   bool _isEditMode = false;
 
-  // Form controllers
   final _nameController = TextEditingController(
     text: 'Fathurrahman Pratama Putra',
   );
@@ -47,7 +44,7 @@ class _BiodataPageState extends State<BiodataPage> {
   }
 
   Future<void> _selectDate(BuildContext context) async {
-    if (!_isEditMode) return; // Only allow in edit mode
+    if (!_isEditMode) return;
 
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -85,7 +82,7 @@ class _BiodataPageState extends State<BiodataPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          // Toggle Edit/View Mode Button
+          // === Toggle Edit/View Mode Button ===
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
@@ -115,7 +112,7 @@ class _BiodataPageState extends State<BiodataPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Profile Photo
+            // === Profile Photo ===
             Hero(
               tag: 'profile',
               child: Container(
@@ -151,7 +148,7 @@ class _BiodataPageState extends State<BiodataPage> {
             ),
             const SizedBox(height: 24),
 
-            // Mode Indicator
+            // === Mode Indicator ===
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
@@ -192,7 +189,7 @@ class _BiodataPageState extends State<BiodataPage> {
             ),
             const SizedBox(height: 24),
 
-            // Info Card
+            // === Info Card ===
             GlassCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -206,7 +203,6 @@ class _BiodataPageState extends State<BiodataPage> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Name Field
                   _isEditMode
                       ? TextField(
                           controller: _nameController,
@@ -222,7 +218,6 @@ class _BiodataPageState extends State<BiodataPage> {
                         ),
                   const SizedBox(height: 16),
 
-                  // Major Field
                   _isEditMode
                       ? DropdownButtonFormField<String>(
                           value: _selectedMajor,
@@ -249,7 +244,6 @@ class _BiodataPageState extends State<BiodataPage> {
                         ),
                   const SizedBox(height: 16),
 
-                  // Gender Field
                   if (_isEditMode) ...[
                     Text(
                       'Gender',
@@ -299,7 +293,6 @@ class _BiodataPageState extends State<BiodataPage> {
                     ),
                   const SizedBox(height: 16),
 
-                  // Date Field
                   _isEditMode
                       ? InkWell(
                           onTap: () => _selectDate(context),
@@ -322,7 +315,6 @@ class _BiodataPageState extends State<BiodataPage> {
                         ),
                   const SizedBox(height: 16),
 
-                  // Hobby Field
                   _isEditMode
                       ? TextField(
                           controller: _hobbyController,
@@ -344,7 +336,6 @@ class _BiodataPageState extends State<BiodataPage> {
 
             if (_isEditMode) ...[
               const SizedBox(height: 16),
-              // Save Button (visual only, data is updated in real-time)
               ElevatedButton.icon(
                 onPressed: () {
                   _toggleEditMode();

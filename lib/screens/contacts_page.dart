@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/avatar_circle.dart';
 
-/// Contacts page showing list of 15+ contacts
 class ContactsPage extends StatelessWidget {
   const ContactsPage({super.key});
 
-  // Static contact data (at least 15 entries)
   static const List<Map<String, String>> _contacts = [
     {'name': 'Budi Bin Belut', 'phone': '0812-3456-7101'},
     {'name': 'Tina Tertawa', 'phone': '0813-7788-2202'},
@@ -39,18 +37,11 @@ class ContactsPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Search functionality placeholder
-            },
-          ),
-        ],
+        actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
       ),
       body: Column(
         children: [
-          // Header info
+          // === Header Info ===
           Padding(
             padding: const EdgeInsets.all(16),
             child: Container(
@@ -96,7 +87,7 @@ class ContactsPage extends StatelessWidget {
             ),
           ),
 
-          // Contacts list
+          // === Contacts List ===
           Expanded(
             child: ListView.builder(
               itemCount: _contacts.length,
@@ -111,7 +102,6 @@ class ContactsPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add contact placeholder
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Add contact feature (static data only)'),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/app_button.dart';
 
-/// Calculator page with operations: +, -, *, /, x², √, C
 class CalculatorPage extends StatefulWidget {
   const CalculatorPage({super.key});
 
@@ -173,7 +172,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
       ),
       body: Column(
         children: [
-          // Display area
+          // === Display Area ===
           Expanded(
             flex: 2,
             child: Container(
@@ -208,7 +207,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
             ),
           ),
 
-          // Keypad
+          // === Keypad ===
           Expanded(
             flex: 4,
             child: Container(
@@ -228,7 +227,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
               ),
               child: Column(
                 children: [
-                  // Row 1
                   Expanded(
                     child: Row(
                       children: [
@@ -251,7 +249,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       ],
                     ),
                   ),
-                  // Row 2
                   Expanded(
                     child: Row(
                       children: [
@@ -275,7 +272,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       ],
                     ),
                   ),
-                  // Row 3
                   Expanded(
                     child: Row(
                       children: [
@@ -299,7 +295,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       ],
                     ),
                   ),
-                  // Row 4
                   Expanded(
                     child: Row(
                       children: [
@@ -323,7 +318,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       ],
                     ),
                   ),
-                  // Row 5
                   Expanded(
                     child: Row(
                       children: [

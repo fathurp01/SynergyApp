@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// News page with static news items
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
 
-  // Static news data
   static const List<Map<String, String>> _newsItems = [
     {
       'title': 'Flutter 3.5 Released with Amazing Features',
@@ -83,7 +81,7 @@ class NewsPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Header banner
+          // === Header Banner ===
           Container(
             margin: const EdgeInsets.all(16),
             padding: const EdgeInsets.all(20),
@@ -126,7 +124,7 @@ class NewsPage extends StatelessWidget {
             ),
           ),
 
-          // News list
+          // === News List ===
           Expanded(
             child: ListView.builder(
               itemCount: _newsItems.length,
@@ -165,7 +163,6 @@ class NewsPage extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Thumbnail placeholder
               Hero(
                 tag: 'news_$index',
                 child: Container(
@@ -187,17 +184,13 @@ class NewsPage extends StatelessWidget {
                     color: Colors.white,
                     size: 32,
                   ),
-                  // Replace with: ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.asset('assets/images/news_placeholder.png', fit: BoxFit.cover))
                 ),
               ),
               const SizedBox(width: 16),
-
-              // Content
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Category badge
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -219,8 +212,6 @@ class NewsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-
-                    // Title
                     Text(
                       news['title']!,
                       style: GoogleFonts.poppins(
@@ -232,8 +223,6 @@ class NewsPage extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 6),
-
-                    // Summary
                     Text(
                       news['summary']!,
                       style: GoogleFonts.poppins(
@@ -245,8 +234,6 @@ class NewsPage extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 8),
-
-                    // Date
                     Row(
                       children: [
                         Icon(

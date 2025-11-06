@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-/// Glassmorphism card widget with blur effect
 class GlassCard extends StatelessWidget {
   final Widget child;
   final Color? backgroundColor;

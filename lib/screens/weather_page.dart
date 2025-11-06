@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/glass_card.dart';
 
-/// Weather page with static weather data and animated clouds
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
 
@@ -17,7 +16,6 @@ class _WeatherPageState extends State<WeatherPage>
   late Animation<double> _cloudAnimation;
   late Animation<double> _glowAnimation;
 
-  // Static weather data - Updated to Bandung with Partly Cloudy
   static const Map<String, dynamic> _weatherData = {
     'location': 'Bandung, Indonesia',
     'temperature': 28,
@@ -32,7 +30,6 @@ class _WeatherPageState extends State<WeatherPage>
   void initState() {
     super.initState();
 
-    // Cloud animation controller - very slow movement
     _cloudController = AnimationController(
       duration: const Duration(seconds: 6),
       vsync: this,
@@ -42,7 +39,6 @@ class _WeatherPageState extends State<WeatherPage>
       CurvedAnimation(parent: _cloudController, curve: Curves.easeInOut),
     );
 
-    // Glow animation controller - very subtle pulsing
     _glowController = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
@@ -81,7 +77,7 @@ class _WeatherPageState extends State<WeatherPage>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Header - Centered
+                // === Header ===
                 Text(
                   'Weather',
                   style: GoogleFonts.poppins(
@@ -99,11 +95,10 @@ class _WeatherPageState extends State<WeatherPage>
                 ),
                 const SizedBox(height: 32),
 
-                // Main weather display
+                // === Main Weather Display ===
                 Center(
                   child: Column(
                     children: [
-                      // Animated weather icon - Sun with moving clouds
                       SizedBox(
                         width: 280,
                         height: 200,
@@ -111,7 +106,6 @@ class _WeatherPageState extends State<WeatherPage>
                           clipBehavior: Clip.none,
                           alignment: Alignment.center,
                           children: [
-                            // Animated Cloud - Behind Sun (Left side)
                             AnimatedBuilder(
                               animation: _cloudAnimation,
                               builder: (context, child) {
@@ -126,8 +120,6 @@ class _WeatherPageState extends State<WeatherPage>
                                 );
                               },
                             ),
-
-                            // Animated Sun with Glow (Center)
                             AnimatedBuilder(
                               animation: _glowAnimation,
                               builder: (context, child) {
@@ -153,8 +145,6 @@ class _WeatherPageState extends State<WeatherPage>
                                 );
                               },
                             ),
-
-                            // Static Cloud - Front of Sun (Right side)
                             Positioned(
                               right: 30,
                               top: 55,
@@ -168,8 +158,6 @@ class _WeatherPageState extends State<WeatherPage>
                         ),
                       ),
                       const SizedBox(height: 24),
-
-                      // Temperature
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,8 +182,6 @@ class _WeatherPageState extends State<WeatherPage>
                         ],
                       ),
                       const SizedBox(height: 8),
-
-                      // Condition
                       Text(
                         _weatherData['condition'] as String,
                         style: GoogleFonts.poppins(
@@ -215,7 +201,7 @@ class _WeatherPageState extends State<WeatherPage>
                 ),
                 const SizedBox(height: 40),
 
-                // Weather details
+                // === Weather Details ===
                 GlassCard(
                   backgroundColor: Colors.white.withOpacity(0.15),
                   child: Column(
@@ -256,7 +242,7 @@ class _WeatherPageState extends State<WeatherPage>
                 ),
                 const SizedBox(height: 24),
 
-                // Weekly forecast placeholder
+                // === Weekly Forecast ===
                 GlassCard(
                   backgroundColor: Colors.white.withOpacity(0.15),
                   child: Column(

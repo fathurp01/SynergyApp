@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// Custom button widget with modern styling
 class AppButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;

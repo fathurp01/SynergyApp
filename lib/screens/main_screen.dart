@@ -5,7 +5,6 @@ import 'calculator_page.dart';
 import 'weather_page.dart';
 import 'news_page.dart';
 
-/// Main screen with BottomNavigationBar hosting 5 pages
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -17,7 +16,6 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   bool _isTransitioning = false;
 
-  // List of pages
   final List<Widget> _pages = const [
     BiodataPage(),
     ContactsPage(),
@@ -33,15 +31,12 @@ class _MainScreenState extends State<MainScreen> {
       _isTransitioning = true;
     });
 
-    // Wait for fade out
     await Future.delayed(const Duration(milliseconds: 50));
 
-    // Change page
     setState(() {
       _currentIndex = index;
     });
 
-    // Wait for fade in
     await Future.delayed(const Duration(milliseconds: 50));
 
     setState(() {
@@ -54,14 +49,12 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Main content
           AnimatedOpacity(
             opacity: _isTransitioning ? 0.0 : 1.0,
             duration: const Duration(milliseconds: 50),
             curve: Curves.easeInOut,
             child: _pages[_currentIndex],
           ),
-          // White flash overlay
           IgnorePointer(
             child: AnimatedOpacity(
               opacity: _isTransitioning ? 1.0 : 0.0,
