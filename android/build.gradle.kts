@@ -2,6 +2,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        // Fallback repositories
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://maven.google.com") }
     }
 }
 
