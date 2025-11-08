@@ -10,6 +10,14 @@
 
 📦 **Repository:** [github.com/fathurp01/SynergyApp](https://github.com/fathurp01/SynergyApp)
 
+## 
+
+<div align="center">
+
+[![Watch Demo](https://img.shields.io/badge/_WATCH_DEMO_VIDEO-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1YQ0UxP-AeeTDytyeoRKOrrbe88mbMbf1/view?usp=drivesdk)
+
+*Klik untuk melihat demo lengkap fitur-fitur Synergy App*
+
 </div>
 
 ---
